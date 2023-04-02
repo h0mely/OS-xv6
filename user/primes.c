@@ -42,9 +42,13 @@ main(int argc, char *argv[])
   }
 
   int p[2];
+  p[0] = 0;
+  p[1] = 1;
+
   int pid = fork();
   if (pid > 0) {
-    flag[0] = flag[1] = '0';
+    flag[0] = '0';
+    flag[1] = '0';
     write(p[1], flag, 36);
     wait(0);
   } else if (pid == 0) {
