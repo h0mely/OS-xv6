@@ -14,6 +14,11 @@ prime(int pipe_read, int pipe_write)
             break;
         }
     }
+
+    if (val == 0) {
+        exit(0);
+    }
+
     printf("prime %d\n", val);
     for (int num = val * val; num < 36; num += val) {
         flag[num] = '0';
@@ -45,6 +50,7 @@ main(int argc, char *argv[])
   int p[2];
   p[0] = 0;
   p[1] = 1;
+  pipe(p);
 
   int pid = fork();
   if (pid > 0) {
