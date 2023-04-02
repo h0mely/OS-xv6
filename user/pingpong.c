@@ -12,12 +12,13 @@ main(int argc, char *argv[])
   }
 
   int p[2];
+  p[0] = 1;
+  p[1] = 0;
   int pid = fork();
   if (pid > 0) {
     char buffer[6];
     read(p[0], buffer, 6);
     printf("%d: received pong\n", getpid());
-    exit(0);
   } else if (pid == 0) {
     printf("%d: received ping\n", getpid());
     write(p[1], "hello", 6);
@@ -25,4 +26,6 @@ main(int argc, char *argv[])
   } else {
     printf("fork error\n");
   }
+
+  exit(0);
 }
