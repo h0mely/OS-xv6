@@ -11,6 +11,7 @@ prime(int pipe_read, int pipe_write)
     for (int i = 0; i < 36; i++) {
         if (flag[i] == '1') {
             val = i;
+            break;
         }
     }
     printf("prime %d\n", val);
