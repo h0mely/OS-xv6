@@ -24,7 +24,7 @@ main(int argc, char *argv[])
   } else if (pid == 0) {
     close(p[0]);
     printf("%d: received ping\n", getpid());
-    write(p[1], "hello", 6);
+    write(p[1], "hello\0", 6);
     close(p[1]);
     exit(0);
   } else {
