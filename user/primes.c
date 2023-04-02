@@ -26,10 +26,8 @@ prime(int pipe_read, int pipe_write)
     int pid = fork();
     if (pid > 0) {
         write(pipe_write, flag, 36);
-        wait(0);
     } else if (pid == 0) {
         prime(pipe_read, pipe_write);
-        exit(0);
     }
 }
 
@@ -60,7 +58,7 @@ main(int argc, char *argv[])
     wait(0);
   } else if (pid == 0) {
     prime(p[0], p[1]);
-    exit(0);
+    wait(0);
   } else {
     printf("fork error\n");
   }
